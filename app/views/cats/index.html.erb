@@ -1,0 +1,12 @@
+<div class="container">
+    <h3>Cat Gallery</h3>
+    <table>
+        <tbody>
+            <% @cats.take(25).each do |cat| %>
+                <tr>
+                    <%= render cat %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
