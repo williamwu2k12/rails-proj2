@@ -4,7 +4,10 @@ class CatsController < ApplicationController
     end
     def show
         @cat = Cat.find(params[:id])
+        @comment = Comment.new
+        @comments = Comment.all
     end
+    
     def new
         @cat = Cat.new
     end

@@ -1,4 +1,20 @@
 <h3><%= @cat.title %></h3>
 <p>Likes: <%= @cat.likes %></p>
 <p>Favorite: <%= @cat.favorite %></p>
+<p>Image: <%= image_tag @cat.image.url %></p>
+<h1> Leave a Comment! </h1>
+<%= simple_form_for @comment do |f| %>
+  Text: <%= f.text_field :content %>
+  <%= f.hidden_field :catid, :value => @cat.id%>
+  <%= f.hidden_field :userid, :value => current_user.id %>
+  <%= f.button :submit %>
+<% end %>
+<% Comment.where(:catid => @cat.id).each do |comment| %>
+		    <tr>
+		    	<%= 1/0 %>
+		    	<% curruser = User.find(comment.userid) %>
+		        <p>User: <%= curruser.name %> | Likes: <%= comment.likes %></p>
+		        <p>Comment: <%= comment.content %></p>
+		    </tr>
+<% end %>
 <!--<%= image_tag @cat.image.url %>
