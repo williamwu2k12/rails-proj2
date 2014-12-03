@@ -4,7 +4,10 @@
         <tbody>
             <% @cats.last(25).each do |cat| %>
                 <tr>
-                    <%= render cat %>
+                  <h3><%= cat.title %></h3>
+                  <p>Likes: <%= cat.likes %></p>
+                  <p>Favorite: <%= cat.favorite %></p>
+                  <p>Image: <%= image_tag cat.image.url %></p>
                 </tr>
             <% end %>
         </tbody>
