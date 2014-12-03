@@ -2,6 +2,9 @@
 <p>Likes: <%= @cat.likes %></p>
 <p>Favorite: <%= @cat.favorite %></p>
 <p>Image: <%= image_tag @cat.image.url %></p>
+<% if current_user != nil %>
+	<%= button_to "Favorite this pic!", favorite_path(id: @cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
+<% end %>
 <% if current_user == nil %>
 	<h1><a href="/users/sign_in">Sign in</a> or <a href="/users/sign_up">Sign up</a> to leave a comment and upvote/downvote. </h1>
 <% end %>

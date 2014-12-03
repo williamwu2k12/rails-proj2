@@ -1,3 +1,8 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
+<h1><%= @user.name %></h1>
 <p>Email: <%= @user.email if @user.email %></p>
+<h3>My Favorites<h3>
+	<% Favorites.where(:userid=> @user.id).each do |favorite| %>
+        <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
+        <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
+	<% end %>
+
