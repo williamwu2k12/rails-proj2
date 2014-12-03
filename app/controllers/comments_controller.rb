@@ -15,9 +15,17 @@ class CommentsController < ApplicationController
     def update
         @comment = Comment.find(params["id"])
         if (params["instruction"] == "upvote")
-    	   @comment.update_attribute(:likes, @comment.likes + 1)
+            if (@comment.likes == nil)
+                @comment.update_attribute(:likes, 1)
+            else
+    	        @comment.update_attribute(:likes, @comment.likes + 1)
+            end
         else
-            @comment.update_attribute(:likes, @comment.likes - 1)
+            if (@comment.likes == nil)
+                @comment.update_attribute(:likes, -1)            
+            else
+                @comment.update_attribute(:likes, @comment.likes - 1)
+            end
         end
         redirect_to :back
     end
