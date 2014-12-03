@@ -1,0 +1,7 @@
+<h1> Our Form to Create a Cat </h1>
+<%= form_for Cat.new, url: {action: "create"} do |f| %>
+  Title: <%= f.text_field :title %>
+  Tags: <%= f.text_area :tag %>
+  Upload picture: <%= f.file_field :image %>
+  <%= f.submit "Create" %>
+<% end %>
