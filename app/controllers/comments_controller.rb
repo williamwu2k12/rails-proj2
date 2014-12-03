@@ -14,17 +14,44 @@ class CommentsController < ApplicationController
 
     def update
         @comment = Comment.find(params["id"])
+        @temp = 0
         if (params["instruction"] == "upvote")
-            if (@comment.likes == nil)
-                @comment.update_attribute(:likes, 1)
-            else
-    	        @comment.update_attribute(:likes, @comment.likes + 1)
+            Likes.all.each do |like|
+                if (like.userid == current_user.id)
+                    if (like.commentid == @comment.id)
+                        @temp = 1
+                    end
+                end
+            end
+            if (@temp != 1)
+                if (@comment.likes == nil)
+                    @comment.update_attribute(:likes, 1)
+                else
+        	        @comment.update_attribute(:likes, @comment.likes + 1)
+                end
+                @like = Likes.new
+                @like.userid = @current_user.id
+                @like.commentid = @comment.id
+                @like.save
             end
         else
-            if (@comment.likes == nil)
-                @comment.update_attribute(:likes, -1)            
-            else
-                @comment.update_attribute(:likes, @comment.likes - 1)
+            Likes.all.each do |like|
+                if (like.userid == current_user.id)
+                    if (like.commentid == @comment.id)
+                        @temp = 1
+                    end
+                end
+            end
+            if (@temp != 1)
+                if (@comment.likes == nil)
+                    @comment.update_attribute(:likes, -1)            
+                else
+                    @comment.update_attribute(:likes, @comment.likes - 1)
+                end
+                @like = Likes.new
+                @like.userid = @current_user.id
+                @like.commentid = @comment.id
+                @like.save
             end
         end
         redirect_to :back
