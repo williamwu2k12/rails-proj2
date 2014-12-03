@@ -1,3 +1,6 @@
+<% if current_user.id == nil %>
+	<% link_to "/cats" %>
+<%end%>
 <h1> Our Form to Create a Cat </h1>
 <%= simple_form_for @cat do |f| %>
   Title: <%= f.text_field :title %>
