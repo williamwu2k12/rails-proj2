@@ -7,6 +7,8 @@
                   <h3><%= cat.title %></h3>
                   <p>Likes: <%= cat.likes %></p>
                   <p>Favorite: <%= cat.favorite %></p>
+                  <p>Tag: <%= cat.tag %></p>
+                  <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
                   <p>Image: <%= image_tag cat.image.url %></p>
                 </tr>
             <% end %>

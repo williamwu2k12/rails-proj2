@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :cats
+  post '/cats/:id/new', to: 'cats#new', as: :new
 end

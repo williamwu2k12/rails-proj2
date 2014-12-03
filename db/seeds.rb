@@ -9,7 +9,7 @@ user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
 %w(UCB UCSD UCSB UCI UCLA).each do |name|
-  Cat.create title: name, likes: 10, tag: 'YOLO', 
+  Cat.create title: name, likes: 10, tag: 'YOLO'
 end
 
 # Make other users
