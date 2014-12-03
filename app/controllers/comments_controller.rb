@@ -9,6 +9,19 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:content, :catid)
+        params.require(:comment).permit(:content, :catid, :userid)
+    end
+
+    def upvote
+    	@comment = Comment.find(params)
+    	@comment.update_attribute(:likes, @comment.likes + 1)
+    end
+
+    def update
+    	redirect_to
+    end
+    def downvote
+		@comment = Comment.find(params)
+    	@comment.update_attribute(:likes, @comment.likes - 1)
     end
 end

@@ -25,7 +25,7 @@ Cat.create title: "Tabby", likes: 100, tag: "ugly", image: File.open("#{Rails.ro
 Cat.create title: "Siberian", likes: 100, tag: "obese", image: File.open("#{Rails.root}/app/assets/images/Siberian.jpg")
 Cat.create title: "Manx", likes: 100, tag: "sexy", image: File.open("#{Rails.root}/app/assets/images/Manx.jpg")
 
-Comment.create userid: User.where(:name => "WilliamWu").first.id catid: Cat.where(:title => "Siamese").first.id content: "I like big butts and I can not lie, you other brothers cant deny" likes: 10000
-Comment.create userid: User.where(:name => "NicStone").first.id catid: Cat.where(:title => "Siamese").first.id content: "That when a girl walks in with an itty bitty waist" likes: -3
-Comment.create userid: User.where(:name => "WarrenTian").first.id catid: Cat.where(:title => "Siamese").first.id content: "And a round thing in your face" likes: 0
-Comment.create userid: User.where(:name => "WilliamWu").first.id catid: Cat.where(:title => "Siamese").first.id content: "Stop. Hammer time." likes: 69
+Comment.create userid: User.where(:name => "WilliamWu").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "I like big butts and I can not lie, you other brothers cant deny", likes: 10000
+Comment.create userid: User.where(:name => "NicStone").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "That when a girl walks in with an itty bitty waist", likes: -3
+Comment.create userid: User.where(:name => "WarrenTian").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "And a round thing in your face", likes: 0
+Comment.create userid: User.where(:name => "WilliamWu").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "Stop. Hammer time.", likes: 69
