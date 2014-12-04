@@ -20,12 +20,19 @@
 <% Comment.where(:catid => @cat.id).each do |comment| %>
 		    <tr>
 		    	<% curruser = User.find(comment.userid) %>
-		        <p>User: <%= curruser.name %> | Likes: <%= comment.likes %></p>
-		        <p>Comment: <%= comment.content %></p>
+		        <h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
+		        	
+		        	<% if (comment.userid == current_user.id) %> 
+		        		<%= button_to "Delete your comment", comment_path(id: comment.id, instruction: "delete"), :class => "button small", :method => :delete %>
+		        	<% end %>
+		        </h5>
+		        <h4>Comment: <%= comment.content %></h4>
 		        <% if current_user != nil %>
 			        <%= button_to "Upvote!", comment_path(id: comment.id, instruction: "upvote"), :class => "button small", :method => :patch %>
 			        <%= button_to "Downvote!", comment_path(id: comment.id, instruction: "downvote"), :class => "button small", :method => :patch %>
 		        <% end %>
+		        <br>
+		        <br>
 		    </tr>
 <% end %>
 <!--<%= image_tag @cat.image.url %>

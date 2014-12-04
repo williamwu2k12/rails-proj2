@@ -56,4 +56,9 @@ class CommentsController < ApplicationController
         end
         redirect_to :back
     end
+
+    def destroy
+        Comment.delete(params["id"])
+        redirect_to :back
+    end
 end
