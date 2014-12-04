@@ -64,6 +64,9 @@ class CatsController < ApplicationController
                 @like.commentid = @cat.id
                 @like.save
             end
+            if (@temp == 1)
+                flash[:notice] = "You've already voted on this cat!"
+            end
         else
             Likes.all.each do |like|
                 if (like.userid == current_user.id)
@@ -82,6 +85,9 @@ class CatsController < ApplicationController
                 @like.userid = current_user.id
                 @like.commentid = @cat.id
                 @like.save
+            end
+            if (@temp == 1)
+                flash[:notice] = "You've already voted on this cat!"
             end
         end
         redirect_to :back

@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
                     if (favorite.catid == @cat.id)
                         @temp = 1
                     end
+                    flash[:notice] = "Favorited!"
                 end
             end
         if (@temp != 1)
