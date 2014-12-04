@@ -7,6 +7,8 @@ Team Members: William Wu, Nic Stone, Warren Tian
 
 Demo Link: http://rocky-tundra-8244.herokuapp.com/
 
+Youtube Demo Link: https://www.youtube.com/watch?v=a6g4SX4mBxc&feature=youtu.be
+
 Idea: A web application where users can create accounts, post, share, view and discuss images.
 
 Models and Description:
@@ -33,13 +35,15 @@ Features:
 - visitors can view images in the gallery
 - visitors can sign up
 
-Note: We decided to change our project to a general image site late and changing model/controller names was difficult so we kept those.
+Note: We decided to change our project from a cat pictures site to a general image site late and changing model/controller names was difficult so we kept those.
 
 Division of Labor:
 We quickly realized that we didn't really like using github for a Rails project (since it's not simply changing one text file), so we decided not to use github as much because of the merge conflicts. Instead, we had one person "driving" (writing the code), one person advising the driver, and one person doing the web research for the current idea we were implementing. We pushed at moments when the code seemed stable. Sometimes when we got stuck on a bug, we all pulled and split to try to fix the bug. We rotated driving, advising, and researching every once in a while. Our general contributions, however, are:
 
-William: Implemented seeds, created general structure of model, did lots of useful debugging, improved layout, worked on comment implementation.
-Nic: Worked with connecting model with view, routing the methods, validations/checking, worked on favorites and likes, user page, image galleries.
+William: Implemented seeds, created general structure of model, did lots of useful debugging, improved layout, worked on comment implementation, deployed to Heroku.
+
+Nic: Worked with connecting model with view, routing the methods, validations/checking, worked on favorites and likes, user page, recent and most popular image galleries.
+
 Warren: Integrated Devise and Paperclip gems to work with the project, worked with controller and view, wrote tests, organization of comments by likes/date posted.
 
 Rails Proj2
