@@ -1,27 +1,37 @@
 Rails Proj2
 -------------
 
-Title: Cats
+Title: Image sharing website
 
 Team Members: William Wu, Nic Stone, Warren Tian
 
 Demo Link: ???????????????
 
-Idea: A web application where users can create accounts, post, and view pictures.
+Idea: A web application where users can create accounts, post, share, view and discuss images.
 
 Models and Description:
 User
 - has name, email, and possesses Cat objects and Comment objects
 Cat
-- has title, tag, likes, and Comment objects, and belongs to the uploader
+- has title, tag, likes, and comments.  Belongs to the uploader
 Comment
-- has likes and content, and belongs to both the Cat it's about and also the writer of the comment
+- has likes and content, and belongs to both the Cat it's about and also the user who wrote the comment
+Favorite
+- has user ID and cat ID and allows for linking of the two
+Likes
+- has user ID and comment ID
 
 Features:
 - users can create an account and login
 - users can upload pictures and post them to the gallery for the public to see
-- users can view pictures posted by other users and comment on them and vote on them
+- users can view pictures posted by other users, comment on them, and vote on them
 - users can vote on the comments
+- users can sort comments by number of upvotes or most recent
+- users can favorite images and view them on their own profile
+- users can easily access their own comments and uploaded images from their profile
+- users can visit other user’s profiles and see their favorites, comments, and submitted images
+- visitors can view images in the gallery
+- visitors can sign up
 
 Note: We decided to change our project to a general image site late and changing model/controller names was difficult so we kept those.
 
@@ -39,26 +49,3 @@ This application requires:
 
 - Ruby 2.1.2
 - Rails 4.1.5
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
