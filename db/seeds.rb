@@ -9,8 +9,8 @@ User.delete_all
 Cat.delete_all
 Comment.delete_all
 
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
 
 # Make other users
 %w(WilliamWu NicStone WarrenTian).each do |name|
