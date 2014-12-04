@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   user_id: 1
-  tag: MyString
+  tag: LOL
   likes: 1
-  favorite: false
+  favorite: true
 
 two:
-  user_id: 1
-  tag: MyString
-  likes: 1
+  id: 2
+  user_id: 2
+  tag: LMAO
+  likes: 2
   favorite: false
+
+three:
+  id: 3
+  user_id: 3
+  tag: HAHA
+  likes: 3
+  favorite: true
