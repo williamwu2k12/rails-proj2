@@ -14,7 +14,7 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 # Make other users
 %w(WilliamWu NicStone WarrenTian).each do |name|
-    User.create name: name, email: name+"@gmail.com", password: "password"
+    User.new(name: name, email: name+"@gmail.com", password: "password").save(validate: false)
 end
 
 Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Siamese", favorite: false, likes: 100, tag: "cute", image: File.open("#{Rails.root}/app/assets/images/Siamese.jpg")
