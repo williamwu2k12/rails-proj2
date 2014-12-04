@@ -14,6 +14,7 @@
 	  Text: <%= f.text_field :content %>
 	  <%= f.hidden_field :catid, :value => @cat.id%>
 	  <%= f.hidden_field :userid, :value => current_user.id %>
+	  <%= f.hidden_field :likes, :value => 0 %>
 	  <%= f.button :submit %>
 	<% end %>
 <% end %>
