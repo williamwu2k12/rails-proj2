@@ -42,6 +42,50 @@ class CatsController < ApplicationController
         redirect_to :back
     end
 
+    def update
+        @cat = Cat.find(params[:id]);
+        if (params["instruction"] == "upvote")
+            Likes.all.each do |like|
+                if (like.userid == current_user.id)
+                    if (like.commentid == @cat.id)
+                        @temp = 1
+                    end
+                end
+            end
+            if (@temp != 1)
+                if (@cat.likes == nil)
+                    @cat.update_attribute(:likes, 1)            
+                else
+                    @cat.update_attribute(:likes, @cat.likes + 1)
+                end
+                @like = Likes.new
+                @like.userid = current_user.id
+                @like.commentid = @cat.id
+                @like.save
+            end
+        else
+            Likes.all.each do |like|
+                if (like.userid == current_user.id)
+                    if (like.commentid == @cat.id)
+                        @temp = 1
+                    end
+                end
+            end
+            if (@temp != 1)
+                if (@cat.likes == nil)
+                    @cat.update_attribute(:likes, -1)            
+                else
+                    @cat.update_attribute(:likes, @cat.likes - 1)
+                end
+                @like = Likes.new
+                @like.userid = current_user.id
+                @like.commentid = @cat.id
+                @like.save
+            end
+        end
+        redirect_to :back
+    end
+
     def cat_params
         params.require(:cat).permit(:title, :tag, :image)
     end

@@ -30,8 +30,14 @@
                                 <p>Tag: <%= cat.tag %></p>
                                 <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
                                 <p><%= image_tag cat.image.url %></p>
-                                <% if current_user != nil %>
+                                 <% if current_user != nil %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
                                     <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
+                                  <% end %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
+                                  <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
+                                   <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+                                   <% end %>
                                 <% end %>
                             </td>
                         <% end %>
