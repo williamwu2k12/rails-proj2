@@ -11,6 +11,7 @@
   
   Upload picture: <br>
   <%= f.file_field :image %> <br><br>
+  <%= f.hidden_field :id, :value => current_user.id %> 
   
   <%= f.button :submit %>
 <% end %>

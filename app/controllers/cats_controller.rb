@@ -13,6 +13,7 @@ class CatsController < ApplicationController
     end
     def create
         @cat = Cat.new(cat_params)
+        @cat.user_id = current_user.id
         @cat.likes = 0
         if (@cat.save)
             redirect_to cats_path

@@ -6,7 +6,9 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <%= render user %>
+              <%= link_to user.name %>
+              <%= 1/0 %>
+              <br>
             </tr>
           <% end %>
         </tbody>
