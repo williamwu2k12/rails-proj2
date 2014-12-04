@@ -2,6 +2,7 @@
 
 <% if user_signed_in? %>
   <li><%= link_to 'My page', user_path(:id => current_user.id)%></li>
+  <li><%= link_to 'Site users', users_path %></li>
   <li><%= link_to 'Image gallery', cats_path %></li>
   <li><%= link_to 'Most popular images', cat_top_path %></li>
   <li><%= link_to 'Post image', new_cat_path %></li>
