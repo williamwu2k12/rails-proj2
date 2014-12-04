@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :favorites
   post '/cats/:id/new', to: 'cats#new', as: :new
   patch 'cats/:id/show', to: 'cats#show', as: :show
+  get '/cat/top', to: 'cats#top'
 end

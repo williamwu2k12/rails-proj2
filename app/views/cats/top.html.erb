@@ -1,0 +1,8 @@
+<h2>Today's most popular images</h2>
+<% @order.each do |cat| %>
+	<p>Likes: <%= cat[0] %></p>
+	<p>Image: <%= image_tag Cat.find(cat[1]).image.url %></p>
+	<p><%= link_to "Comments", cat_path(:id => cat[1]) %></p>
+	<br>
+<% end %>
+	

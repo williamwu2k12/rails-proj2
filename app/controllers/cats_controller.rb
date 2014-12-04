@@ -21,6 +21,16 @@ class CatsController < ApplicationController
         end
     end
 
+    def top
+        @cats = Cat.all
+        @order = Hash.new
+        @cats.each do |cat|
+            @order[cat.likes] = cat.id
+        end
+        @order = @order.sort
+        @order = @order.reverse
+    end
+
     def cat_params
         params.require(:cat).permit(:title, :tag, :image)
     end
