@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:content, :catid, :userid)
+        params.require(:comment).permit(:content, :catid, :userid, :likes)
     end
 
     def update
