@@ -31,6 +31,11 @@ class CatsController < ApplicationController
         @order = @order.reverse
     end
 
+    def destroy
+        @cat = Cat.destroy(params[:id])
+        redirect_to :back
+    end
+
     def cat_params
         params.require(:cat).permit(:title, :tag, :image)
     end

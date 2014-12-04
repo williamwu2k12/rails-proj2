@@ -1,9 +1,26 @@
 <h1><%= @user.name %></h1>
 <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-<h3>My Favorites<h3>
-	<% Favorites.where(:userid=> @user.id).each do |favorite| %>
-        <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
-        <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
-        <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
-	<% end %>
+<h3>My Favorites</h3>
+<% Favorites.where(:userid=> @user.id).each do |favorite| %>
+    <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
+    <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
+    <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+<% end %>
 
+<h3>Submitted</h3>
+<table>
+    <tbody>
+        <% Cat.where(:user_id => current_user.id).find_in_batches(:batch_size => 5) do |group| %>
+        <tr>
+            <% group.each do |item| %>
+                <td style="padding: 20px">
+                    <h4>Title: <%= Cat.find(item.id).title %></h4>
+                    <p><%= image_tag Cat.find(item.id).image.url %></p>
+                    <p><%= link_to "Comments", cat_path(:id => item.id) %></p>
+                    <p><%= button_to "Delete", cat_path(id: item.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+                </td>
+            <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
