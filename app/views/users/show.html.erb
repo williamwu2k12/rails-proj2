@@ -17,12 +17,11 @@
     <% end %>
 <% end %>
 <br>
-
-<p><%= button_to "My comments", "/user/comments", :method => :get %></p>
+<p><%= button_to "My comments", "/user/"+((@user.id).to_s)+"/comments", :method => :get%></p>
 <h3>Submitted</h3>
 <table>
     <tbody>
-        <% Cat.where(:user_id => current_user.id).find_in_batches(:batch_size => 5) do |group| %>
+        <% Cat.where(:user_id => @user.id).find_in_batches(:batch_size => 5) do |group| %>
         <tr>
             <% group.each do |item| %>
                 <td style="padding: 20px">

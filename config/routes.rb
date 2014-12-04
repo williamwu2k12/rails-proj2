@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   post '/cats/:id/new', to: 'cats#new', as: :new
   patch 'cats/:id/show', to: 'cats#show', as: :show
   get '/cat/top', to: 'cats#top'
-  get '/user/comments', to: 'users#comments'
+  get '/user/:id/comments', to: 'users#comments'
   get '/cats/:id/showsorted', to: 'cats#showsorted', as: :showsorted
 end

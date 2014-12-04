@@ -1,5 +1,5 @@
 <h3>My Comments</h3>
-<% Comment.where(:userid => current_user.id).each do |comment| %>
+<% Comment.where(:userid => @user.id).each do |comment| %>
 	<% curruser = User.find(comment.userid) %>
 	<h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
 		        	Posted: <%= comment.created_at %>
