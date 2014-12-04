@@ -3,10 +3,12 @@
 	<% curruser = User.find(comment.userid) %>
 	<h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
 		        	Posted: <%= comment.created_at %>
-		        	<% if (comment.userid == current_user.id) %>
-		        		<% if (comment.userid == current_user.id) %> 
-		        			<%= button_to "Delete your comment", comment_path(id: comment.id, instruction: "delete"), :class => "button small", :method => :delete %>
-		        		<% end %>
+		        	<% if current_user != nil %>
+			        	<% if (comment.userid == current_user.id) %>
+			        		<% if (comment.userid == current_user.id) %> 
+			        			<%= button_to "Delete your comment", comment_path(id: comment.id, instruction: "delete"), :class => "button small", :method => :delete %>
+			        		<% end %>
+			        	<% end %>
 		        	<% end %>
 	</h5>
 	<h4>Comment: <%= comment.content %></h4>
