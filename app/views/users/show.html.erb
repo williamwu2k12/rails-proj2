@@ -1,5 +1,5 @@
 <h1><%= @user.name %></h1>
-<p>Email: <%= @user.email if @user.email %></p>
+<li><%= link_to 'Edit account', edit_user_registration_path %></li>
 <h3>My Favorites<h3>
 	<% Favorites.where(:userid=> @user.id).each do |favorite| %>
         <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
