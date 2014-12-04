@@ -1,15 +1,32 @@
 <div class="container">
-    <h3>Cat Gallery</h3>
+    <h2>Today's Recent</h2>
     <table>
         <tbody>
-            <% @cats.last(25).each do |cat| %>
+            <% @cats.last(25).in_groups_of(5).each do |group| %>
                 <tr>
-                  <h3><%= cat.title %></h3>
-                  <p>Likes: <%= cat.likes %></p>
-                  <p>Favorite: <%= cat.favorite %></p>
-                  <p>Tag: <%= cat.tag %></p>
-                  <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
-                  <p>Image: <%= image_tag cat.image.url %></p>
+                    <% group.each do |cat| %>
+                        <% if cat and Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
+                            <td style="padding: 20px; background-color: LightGreen; border: 5px solid #eee">
+                                <h3><%= cat.title %></h3>
+                                <p>Likes: <%= cat.likes %></p>
+                                <p>Tag: <%= cat.tag %></p>
+                                <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
+                                <p><%= image_tag cat.image.url %></p>
+                            </td>
+                        <% end %>
+                        <% if cat and Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
+                            <td style="padding: 20px; border: 5px solid #eee">
+                                <h3><%= cat.title %></h3>
+                                <p>Likes: <%= cat.likes %></p>
+                                <p>Tag: <%= cat.tag %></p>
+                                <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
+                                <p><%= image_tag cat.image.url %></p>
+                            </td>
+                        <% end %>
+                        <% if not cat %>
+                            <td></td>
+                        <% end %>
+                    <% end %>
                 </tr>
             <% end %>
         </tbody>
