@@ -5,73 +5,75 @@
             <% @cats.last(25).in_groups_of(5).each do |group| %>
                 <tr>
                     <% group.each do |cat| %>
-                          <% if cat and current_user != nil and Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
-                              <td class="style_tdf">
-                                  <h3><%= cat.title %></h3>
-                                  <p>Likes: <%= cat.likes %></p>
-                                  <% if current_user != nil %>
-                                      <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
-                                      <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                        <% if cat and current_user != nil and Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
+                            <td class="style_tdf">
+                                <h3><%= cat.title %></h3>
+                                <p>Likes: <%= cat.likes %></p>
+                                <% if current_user != nil %>
+                                    <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+                                    <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <% end %>
+                                <p><%= image_tag cat.image.url, :class => "style_image" %></p>
+                                <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
+                                <% if current_user != nil %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
+                                    <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
                                   <% end %>
-                                  <p><%= image_tag cat.image.url, :class => "style_image" %></p>
-                                  <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
-                                  <% if current_user != nil %>
-                                    <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
-                                      <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
-                                    <% end %>
-                                    <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
-                                    <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
-                                     <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
-                                     <% end %>
-                                  <% end %>
-                              </td>
-                          <% end %>
-                          <% if cat and current_user != nil and Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
-                              <td class="style_tdnf">
-                                  <h3><%= cat.title %></h3>
-                                  <p>Likes: <%= cat.likes %></p>
-                                  <% if current_user != nil %>
-                                      <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
-                                      <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
-                                  <% end %>
-                                  <p><%= image_tag cat.image.url, :class => "style_image" %></p>
-                                  <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
-                                   <% if current_user != nil %>
-                                    <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
-                                      <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
-                                    <% end %>
-                                    <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
-                                    <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
-                                     <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
-                                     <% end %>
-                                  <% end %>
-                              </td>
-                          <% else %>
-                          <% if cat %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
+                                  <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
+                                   <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+                                   <% end %>
+                                <% end %>
+                            </td>
+                        <% end %>
+                        
+                        <% if cat and current_user != nil and Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
                             <td class="style_tdnf">
-                                  <h3><%= cat.title %></h3>
-                                  <p>Likes: <%= cat.likes %></p>
-                                  <% if current_user != nil %>
-                                      <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
-                                      <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <h3><%= cat.title %></h3>
+                                <p>Likes: <%= cat.likes %></p>
+                                <% if current_user != nil %>
+                                    <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+                                    <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <% end %>
+                                <p><%= image_tag cat.image.url, :class => "style_image" %></p>
+                                <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
+                                 <% if current_user != nil %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
+                                    <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
                                   <% end %>
-                                  <p><%= image_tag cat.image.url, :class => "style_image" %></p>
-                                  <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
-                                  <% if current_user != nil %>
+                                  <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
+                                  <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
+                                   <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+                                   <% end %>
+                                <% end %>
+                            </td>
+                        <% end %>
+
+                        <% if cat and current_user == nil %>
+                            <td class="style_tdnf">
+                                <h3><%= cat.title %></h3>
+                                <p>Likes: <%= cat.likes %></p>
+                                <% if current_user != nil %>
+                                    <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+                                    <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <% end %>
+                                <p><%= image_tag cat.image.url, :class => "style_image" %></p>
+                                <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
+                                <% if current_user != nil %>
                                     <% if Favorites.where(:catid => cat.id, :userid => current_user.id) == [] %>
                                       <%= button_to "Favorite this pic!", favorite_path(id: cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
                                     <% end %>
                                     <% if Favorites.where(:catid => cat.id, :userid => current_user.id) != [] %>
-                                    <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
-                                     <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
-                                     <% end %>
-                                  <% end %>
-                              </td>
-                              <% end %>
-                            <% end %>
-                          <% if not cat %>
-                              <td></td>
-                          <% end %>
+                                        <% favorite = Favorites.where(:catid => cat.id, :userid => current_user.id).first %>
+                                         <p><%= button_to "Remove Favorite", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+                                    <% end %>
+                                <% end %>
+                            </td>
+                        <% end %>
+
+                        <% if not cat %>
+                            <td></td>
+                        <% end %>
                     <% end %>
                 </tr>
             <% end %>
