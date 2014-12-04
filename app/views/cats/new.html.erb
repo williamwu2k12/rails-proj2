@@ -1,10 +1,16 @@
 <% if current_user.id == nil %>
 	<% link_to "/cats" %>
 <%end%>
-<h1> Our Form to Create a Cat </h1>
+<h1> Submit a Image to the Gallery! </h1>
 <%= simple_form_for @cat do |f| %>
-  Title: <%= f.text_field :title %>
-  Tags: <%= f.text_area :tag %>
-  Upload picture: <%= f.file_field :image %>
+  Title: <br>
+  <%= f.text_field :title %> <br><br>
+  
+  Tags: <br>
+  <%= f.text_field :tag %> <br><br>
+  
+  Upload picture: <br>
+  <%= f.file_field :image %> <br><br>
+  
   <%= f.button :submit %>
 <% end %>

@@ -15,6 +15,35 @@ img {
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
+.style_image
+{
+  width: 100%;
+  height: auto;
+}
+.style_td
+{
+  padding: 20px;
+  width: 200px;
+  height: 300px;
+  vertical-align: top;
+}
+.style_tdnf
+{
+  padding: 20px;
+  border: 5px solid #eee;
+  width: 200px;
+  height: 300px;
+  vertical-align: top;
+}
+.style_tdf
+{
+  padding: 20px;
+  background-color: LightGreen;
+  border: 5px solid #eee;
+  width: 200px;
+  height: 300px;
+  vertical-align: top;
+}
 .column {
   @extend .col-md-6;
   @extend .text-center;

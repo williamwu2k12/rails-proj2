@@ -6,14 +6,14 @@
                 <tr>
                     <% (0..5).each do |i| %>
                         <% if group[i] != nil and Favorites.where(:catid => group[i][1], :userid => current_user.id) != []%>
-                            <td style="padding: 20px; background-color: LightGreen; border: 5px solid #eee">
+                            <td class="style_tdf">
                                 <h3><%= Cat.find(group[i][1]).title %></h3>
                                 <p>Likes: <%= group[i][0] %></p>
                                 <% if current_user != nil %>
                                     <%= button_to "Like!", cat_path(id: Cat.find(group[i][1]).id, instruction: "upvote"), :class => "button small", :method => :patch %>
                                     <%= button_to "Dislike!", cat_path(id: Cat.find(group[i][1]).id, instruction: "downvote"), :class => "button small", :method => :patch %>
                                 <% end %>
-                                <p><%= image_tag Cat.find(group[i][1]).image.url %></p>
+                                <p><%= image_tag Cat.find(group[i][1]).image.url, :class => "style_image" %></p>
                                 <p><%= link_to "Comments", cat_path(:id => group[i][1]) %></p>
                                 <% if current_user != nil %>
                                     <% favorite = Favorites.where(:catid => group[i][1], :userid => current_user.id).first %>
@@ -22,14 +22,14 @@
                             </td>
                         <% end %>
                         <% if group[i] != nil and Favorites.where(:catid => group[i][1], :userid => current_user.id) == []%>
-                            <td style="padding: 20px; border: 5px solid #eee">
+                            <td class="style_tdnf">
                                 <h3><%= Cat.find(group[i][1]).title %></h3>
                                 <p>Likes: <%= group[i][0] %></p>
                                 <% if current_user != nil %>
                                     <%= button_to "Like!", cat_path(id: Cat.find(group[i][1]).id, instruction: "upvote"), :class => "button small", :method => :patch %>
                                     <%= button_to "Dislike!", cat_path(id: Cat.find(group[i][1]).id, instruction: "downvote"), :class => "button small", :method => :patch %>
                                 <% end %>
-                                <p><%= image_tag Cat.find(group[i][1]).image.url %></p>
+                                <p><%= image_tag Cat.find(group[i][1]).image.url, :class => "style_image" %></p>
                                 <p><%= link_to "Comments", cat_path(:id => group[i][1]) %></p>
                                 <% if current_user != nil %>
                                     <p><%= button_to "Favorite this pic!", favorite_path(id: group[i][1], instruction: "Favorite"), :class => "button small", :method => :patch %></p>
