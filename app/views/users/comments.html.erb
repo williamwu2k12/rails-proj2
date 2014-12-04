@@ -2,7 +2,7 @@
 <% Comment.where(:userid => current_user.id).each do |comment| %>
 	<% curruser = User.find(comment.userid) %>
 	<h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
-		        	
+		        	Posted: <%= comment.created_at %>
 		        	<% if (comment.userid == current_user.id) %> 
 		        		<%= button_to "Delete your comment", comment_path(id: comment.id, instruction: "delete"), :class => "button small", :method => :delete %>
 		        	<% end %>
