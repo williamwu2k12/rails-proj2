@@ -18,4 +18,8 @@ class FavoritesController < ApplicationController
 	    end
 	    redirect_to :back
 	end
+	def destroy
+		Favorites.delete(params[:id])
+		redirect_to :back
+	end
 end

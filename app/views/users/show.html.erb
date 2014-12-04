@@ -4,5 +4,6 @@
 	<% Favorites.where(:userid=> @user.id).each do |favorite| %>
         <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
         <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
+        <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
 	<% end %>
 
