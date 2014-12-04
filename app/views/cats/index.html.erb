@@ -9,7 +9,10 @@
                             <td style="padding: 20px; background-color: LightGreen; border: 5px solid #eee">
                                 <h3><%= cat.title %></h3>
                                 <p>Likes: <%= cat.likes %></p>
-                                <p>Tag: <%= cat.tag %></p>
+                                <% if current_user != nil %>
+                                    <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+                                    <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <% end %>
                                 <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
                                 <p><%= image_tag cat.image.url %></p>
                                 <% if current_user != nil %>
@@ -27,7 +30,10 @@
                             <td style="padding: 20px; border: 5px solid #eee">
                                 <h3><%= cat.title %></h3>
                                 <p>Likes: <%= cat.likes %></p>
-                                <p>Tag: <%= cat.tag %></p>
+                                <% if current_user != nil %>
+                                    <%= button_to "Like!", cat_path(id: cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+                                    <%= button_to "Dislike!", cat_path(id: cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+                                <% end %>
                                 <p><%= link_to "Comments", cat_path(:id => cat.id) %></p>
                                 <p><%= image_tag cat.image.url %></p>
                                  <% if current_user != nil %>
