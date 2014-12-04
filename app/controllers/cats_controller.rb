@@ -21,6 +21,12 @@ class CatsController < ApplicationController
         end
     end
 
+    def showsorted
+        @cat = Cat.find(params[:id])
+        @comment = Comment.new
+        @comments = Comment.all
+    end
+
     def top
         @cats = Cat.all
         @order = Hash.new

@@ -6,7 +6,7 @@
     <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
     <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
 <% end %>
-
+<p><%= button_to "My comments", "/user/comments", :method => :get %></p>
 <h3>Submitted</h3>
 <table>
     <tbody>

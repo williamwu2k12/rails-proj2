@@ -18,8 +18,8 @@
 	  <%= f.button :submit %>
 	<% end %>
 <% end %>
-<p><%= link_to "Sort Comments by Likes!", showsorted_path(:id => @cat.id) %></p>
-<% Comment.where(:catid => @cat.id).order('created_at DESC').each do |comment| %>
+<%= link_to "Sort Comments by Recent!", cat_path(:id => @cat.id) %>
+<% Comment.where(:catid => @cat.id).order('likes DESC').each do |comment| %>
 		    <tr>
 		    	<% curruser = User.find(comment.userid) %>
 		        <h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
