@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FavoritesTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "test_favorite_count" do
+    assert_equal 3, Favorites.count, "yaml works"
+  end
 end

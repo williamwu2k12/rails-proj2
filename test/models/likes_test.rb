@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class LikesTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "test_likes_count" do
+    assert_equal 3, Likes.count, "yaml works"
+  end
 end

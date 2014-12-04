@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   userid: 1
-  content: MyText
+  content: IMUSER1
   likes: 1
 
 two:
-  userid: 1
-  content: MyText
-  likes: 1
+  id: 2
+  userid: 2
+  content: IMUSER2
+  likes: 2
+
+three:
+  id: 3
+  userid: 3
+  content: IMUSER3
+  likes: 3
