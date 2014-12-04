@@ -1,12 +1,14 @@
 <h3><%= @cat.title %></h3>
 <p>Likes: <%= @cat.likes %></p>
-<p>Favorite: <%= @cat.favorite %></p>
+<% if current_user != nil %>
+	<p>Favorite: <%= @cat.favorite %></p>
+<% end %>
 <p>Image: <%= image_tag @cat.image.url %></p>
 <% if current_user != nil %>
 	<%= button_to "Favorite this pic!", favorite_path(id: @cat.id, instruction: "Favorite"), :class => "button small", :method => :patch %>
 <% end %>
 <% if current_user == nil %>
-	<h1><a href="/users/sign_in">Sign in</a> or <a href="/users/sign_up">Sign up</a> to leave a comment and upvote/downvote. </h1>
+	<h3><a href="/users/sign_in">Sign in</a> or <a href="/users/sign_up">Sign up</a> to leave a comment and upvote/downvote. </h3>
 <% end %>
 <% if current_user != nil %>
 	<h1> Leave a Comment! </h1>
@@ -24,9 +26,11 @@
 		    	<% curruser = User.find(comment.userid) %>
 		        <h5>User: <%= curruser.name %> | Likes: <%= comment.likes %> | 
 		        Posted: <%= comment.created_at %>	
+		        <% if current_user != nil %>
 		        	<% if (comment.userid == current_user.id) %> 
 		        		<%= button_to "Delete your comment", comment_path(id: comment.id, instruction: "delete"), :class => "button small", :method => :delete %>
 		        	<% end %>
+		        <% end %>
 		        </h5>
 		        <h4>Comment: <%= comment.content %></h4>
 		        <% if current_user != nil %>
