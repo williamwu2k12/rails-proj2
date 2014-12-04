@@ -14,7 +14,7 @@ Comment.delete_all
 
 # Make other users
 %w(WilliamWu NicStone WarrenTian).each do |name|
-    User.new(name: name, email: name+"@gmail.com", password: "password").save(validate: false)
+    User.create name: name, email: name+"@gmail.com", password: "password"
 end
 
 Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Siamese", favorite: false, likes: 100, tag: "cute", image: File.open("#{Rails.root}/app/assets/images/Siamese.jpg")
