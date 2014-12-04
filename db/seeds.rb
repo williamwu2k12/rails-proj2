@@ -17,13 +17,13 @@ puts 'CREATED ADMIN USER: ' << user.email
     User.create name: name, email: name+"@gmail.com", password: "password"
 end
 
-Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Siamese", likes: 100, tag: "cute", image: File.open("#{Rails.root}/app/assets/images/Siamese.jpg")
-Cat.create user_id: User.where(:name => "NicStone").first.id, title: "Persian", likes: 120, tag: "beautiful", image: File.open("#{Rails.root}/app/assets/images/Persian.jpg")
-Cat.create user_id: User.where(:name => "WarrenTian").first.id, title: "Bengal", likes: 200, tag: "disgusting", image: File.open("#{Rails.root}/app/assets/images/Bengal.jpg")
-Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Burmese", likes: 30, tag: "terrifying", image: File.open("#{Rails.root}/app/assets/images/Burmese.jpg")
-Cat.create user_id: User.where(:name => "NicStone").first.id, title: "Tabby", likes: 50, tag: "ugly", image: File.open("#{Rails.root}/app/assets/images/Tabby.jpg")
-Cat.create user_id: User.where(:name => "WarrenTian").first.id, title: "Siberian", likes: 150, tag: "obese", image: File.open("#{Rails.root}/app/assets/images/Siberian.jpg")
-Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Manx", likes: 120, tag: "sexy", image: File.open("#{Rails.root}/app/assets/images/Manx.jpg")
+Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Siamese", favorite: false, likes: 100, tag: "cute", image: File.open("#{Rails.root}/app/assets/images/Siamese.jpg")
+Cat.create user_id: User.where(:name => "NicStone").first.id, title: "Persian", favorite: false, likes: 120, tag: "beautiful", image: File.open("#{Rails.root}/app/assets/images/Persian.jpg")
+Cat.create user_id: User.where(:name => "WarrenTian").first.id, title: "Bengal", favorite: false, likes: 200, tag: "disgusting", image: File.open("#{Rails.root}/app/assets/images/Bengal.jpg")
+Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Burmese", favorite: false, likes: 30, tag: "terrifying", image: File.open("#{Rails.root}/app/assets/images/Burmese.jpg")
+Cat.create user_id: User.where(:name => "NicStone").first.id, title: "Tabby", favorite: false, likes: 50, tag: "ugly", image: File.open("#{Rails.root}/app/assets/images/Tabby.jpg")
+Cat.create user_id: User.where(:name => "WarrenTian").first.id, title: "Siberian", favorite: false, likes: 150, tag: "obese", image: File.open("#{Rails.root}/app/assets/images/Siberian.jpg")
+Cat.create user_id: User.where(:name => "WilliamWu").first.id, title: "Manx", favorite: false, likes: 120, tag: "sexy", image: File.open("#{Rails.root}/app/assets/images/Manx.jpg")
 
 Comment.create userid: User.where(:name => "WilliamWu").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "I like big butts and I can not lie, you other brothers cant deny", likes: 10000
 Comment.create userid: User.where(:name => "NicStone").first.id, catid: Cat.where(:title => "Siamese").first.id, content: "That when a girl walks in with an itty bitty waist", likes: -3
