@@ -1,11 +1,17 @@
 <h1><%= @user.name %></h1>
 <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-<h3>My Favorites</h3>
-<% Favorites.where(:userid=> @user.id).each do |favorite| %>
-    <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
-    <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
-    <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+<% if (Favorites.where(:userid=> @user.id) != []) %>
+    <h3>My Favorites</h3>
+    <% Favorites.where(:userid=> @user.id).each do |favorite| %>
+        <p>Image: <%= image_tag Cat.find(favorite.catid).image.url %></p>
+        <p><%= link_to "Comments", cat_path(:id => favorite.catid) %></p>
+        <p><%= button_to "Delete", favorite_path(id: favorite.id, instruction: "delete"), :class => "button small", :method => :delete %></p>
+    <% end %>
+<% else %>
+    <h4>Favorite images in the <a href='/cats'>Image Gallery</a> so you can see them later</h4>
 <% end %>
+<br>
+
 <p><%= button_to "My comments", "/user/comments", :method => :get %></p>
 <h3>Submitted</h3>
 <table>
