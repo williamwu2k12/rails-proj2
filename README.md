@@ -1,11 +1,11 @@
 Rails Proj2
 -------------
 
-Title: Image sharing website
+Title: Image Sharing Website
 
 Team Members: William Wu, Nic Stone, Warren Tian
 
-Demo Link: ???????????????
+Demo Link: http://rocky-tundra-8244.herokuapp.com/
 
 Idea: A web application where users can create accounts, post, share, view and discuss images.
 
@@ -49,3 +49,19 @@ This application requires:
 
 - Ruby 2.1.2
 - Rails 4.1.5
+
+Instructions
+
+For future reference of building a rails application
+- /Gemfile must have sqlite3 in development and pg (postgres) in production
+- /config/database.yml does not need to be changed
+- /config/initializers/devise.rb config mailer_sender needs to be commented because it accesses a nil domain name
+
+Steps:
+0. gem install [gems]
+1. git add and commit all your files
+2. bundle install (to check, even though this step is already run in git push heroku master)
+3. git push heroku master
+4. heroku pg:reset DATABASE (resets, because rake db:create and rake db:reset are not allowed)
+5. heroku run rake db:migrate
+6. heroku run rake db:seed
