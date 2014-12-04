@@ -7,7 +7,7 @@ Team Members: William Wu, Nic Stone, Warren Tian
 
 Demo Link: ???????????????
 
-Idea: A web application where users can create accounts, post, and view pictures of cats.
+Idea: A web application where users can create accounts, post, and view pictures.
 
 Models and Description:
 User
@@ -23,13 +23,14 @@ Features:
 - users can view pictures posted by other users and comment on them and vote on them
 - users can vote on the comments
 
+Note: We decided to change our project to a general image site late and changing model/controller names was difficult so we kept those.
+
 Division of Labor:
 We quickly realized that we didn't really like using github for a Rails project (since it's not simply changing one text file), so we decided not to use github as much because of the merge conflicts. Instead, we had one person "driving" (writing the code), one person advising the driver, and one person doing the web research for the current idea we were implementing. We pushed at moments when the code seemed stable. Sometimes when we got stuck on a bug, we all pulled and split to try to fix the bug. We rotated driving, advising, and researching every once in a while. Our general contributions, however, are:
 
-William: Implemented seeds, created general structure of model, did lots of useful debugging.
-Nic: Worked with connecting model with view, routing the methods, validations/checking, and testing.
-Warren: Integrated Devise and Paperclip gems to work with the project, worked with controller and view.
-
+William: Implemented seeds, created general structure of model, did lots of useful debugging, improved layout, worked on comment implementation.
+Nic: Worked with connecting model with view, routing the methods, validations/checking, worked on favorites and likes, user page, image galleries.
+Warren: Integrated Devise and Paperclip gems to work with the project, worked with controller and view, wrote tests, organization of comments by likes/date posted.
 
 Rails Proj2
 -------------
