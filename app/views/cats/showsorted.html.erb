@@ -1,6 +1,10 @@
 <h3><%= @cat.title %></h3>
 <p>Likes: <%= @cat.likes %></p>
 <% if current_user != nil %>
+	<%= button_to "Like!", cat_path(id: @cat.id, instruction: "upvote"), :class => "button small", :method => :patch %>
+	<%= button_to "Dislike!", cat_path(id: @cat.id, instruction: "downvote"), :class => "button small", :method => :patch %>
+<% end %>
+<% if current_user != nil %>
 	<p>Favorite: <%= @cat.favorite %></p>
 <% end %>
 <p>Image: <%= image_tag @cat.image.url %></p>
